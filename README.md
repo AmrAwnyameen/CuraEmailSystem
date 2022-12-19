@@ -4,7 +4,12 @@
   Simple Internal Email system  Demo To send and received Email
 <hr></hr>
 
-- 📄 [Db schema](https://drive.google.com/file/d/1gKf2ANgu6duqtCgrKSwDGAxHP7wImyL7/view?usp=sharing)
+📄 [Url](https://curaemail.azurewebsites.net/)
+
+
+📄 [Db schema](https://drive.google.com/file/d/1gKf2ANgu6duqtCgrKSwDGAxHP7wImyL7/view?usp=sharing)
+
+
 <h3 align="left">Languages and Tools:</h3>
 <h3 align="left"> 
 c#,
