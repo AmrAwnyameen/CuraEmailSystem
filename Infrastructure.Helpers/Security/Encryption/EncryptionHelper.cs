@@ -1,0 +1,197 @@
+﻿using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Infrastructure.Helpers.Security
+{
+    public class EncryptionHelper
+    {
+        private static readonly byte[] initVectorBytes = Encoding.ASCII.GetBytes("tu89geji340t89u2");
+
+        // This constant is used to determine the keysize of the encryption algorithm.
+        private const int keysize = 256;
+        static string passPhrase = "&$#$%$";
+        public static string Encrypt(string plainText)
+        {
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            {
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+                    {
+                        using (System.IO.MemoryStream memoryStream = new MemoryStream())
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                                cryptoStream.FlushFinalBlock();
+                                byte[] cipherTextBytes = memoryStream.ToArray();
+                                return Convert.ToBase64String(cipherTextBytes);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static string Decrypt(string cipherText)
+        {
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            {
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+                    {
+                        using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public static string EncryptWithOutSpectialCharacter(string plainText)
+        {
+            if (plainText != null || !string.IsNullOrEmpty(plainText))
+            {
+                byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText.ToString());
+                using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+                {
+                    byte[] keyBytes = password.GetBytes(keysize / 8);
+                    using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                    {
+                        symmetricKey.Mode = CipherMode.CBC;
+                        using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+                        {
+                            using (MemoryStream memoryStream = new MemoryStream())
+                            {
+                                using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                                {
+                                    cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                                    cryptoStream.FlushFinalBlock();
+                                    byte[] cipherTextBytes = memoryStream.ToArray();
+                                    //By Islam Osman
+                                    return Convert.ToBase64String(cipherTextBytes).Replace('+', '-').Replace('/', '_').Replace("=", "EQUAL").Replace(",", "COMMA");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public static string DecryptWithOutSpectialCharacter(string cipherText)
+        {
+            try
+            {
+                if (cipherText != null || !string.IsNullOrEmpty(cipherText))
+                {
+                    //By Islam Osman
+                    cipherText = cipherText.Replace('-', '+').Replace('_', '/').Replace("EQUAL", "=").Replace("COMMA", ",");
+                    byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+                    using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+                    {
+                        byte[] keyBytes = password.GetBytes(keysize / 8);
+                        using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                        {
+                            symmetricKey.Mode = CipherMode.CBC;
+                            using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+                            {
+                                using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+                                {
+                                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                                    {
+                                        byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                                        int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                                        return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return cipherText;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+        public static string EncryptPass(string plainText)
+        {
+            byte[] plainTextBytes = Encoding.UTF32.GetBytes(plainText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            {
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes))
+                    {
+                        using (System.IO.MemoryStream memoryStream = new MemoryStream())
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                                cryptoStream.FlushFinalBlock();
+                                byte[] cipherTextBytes = memoryStream.ToArray();
+                                return Convert.ToBase64String(cipherTextBytes);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static string DecryptPass(string cipherText)
+        {
+            byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
+            using (PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null))
+            {
+                byte[] keyBytes = password.GetBytes(keysize / 8);
+                using (RijndaelManaged symmetricKey = new RijndaelManaged())
+                {
+                    symmetricKey.Mode = CipherMode.CBC;
+                    using (ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes))
+                    {
+                        using (MemoryStream memoryStream = new MemoryStream(cipherTextBytes))
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                                int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                                return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

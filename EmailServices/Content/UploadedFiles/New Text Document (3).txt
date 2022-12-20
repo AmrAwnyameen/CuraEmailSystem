@@ -1,0 +1,45 @@
+create view duplicatedItemWithSameRegisterBook as
+WITH DUPLICATEMON AS (
+SELECT  registerbooks_id
+,[general_register],
+count (registerbooks_id) con, 
+h.f_delete,museumid
+  FROM [MOA_Final_29072020].[ARC].[item_movement_history] h
+  join [MOA_Final_29072020].[ARC].[mwocmon] mon
+  on mon.monumentid = h.monumentid and mon .F_Delete =0
+  join [MOA_Final_29072020].[ARC].[registerbooks] rg
+  on rg.id = h.registerbooks_id and rg.f_delete =0 and mon.MonumentType_Id =6
+  group by
+  museumid,
+  registerbooks_id ,
+  [general_register],
+  h.f_delete having
+  (general_register is not null) and ISNUMERIC(general_register) > 0
+  and h.f_delete =0 and count (registerbooks_id) > 1 
+)
+  
+  select hr.[id]
+      ,hr.[general_register] 'رقم',
+	  mon.Name  N'الاسم'
+      ,rg.aname 'سجل'
+      ,mu.aname 'مخزن'
+	  	    ,hr.[monumentid],
+		mon.Description 
+
+			
+       from [MOA_Final_29072020].[ARC].[item_movement_history]  hr
+	  join  DUPLICATEMON dom on hr.general_register =dom.general_register
+	  join [MOA_Final_29072020].[ARC].[mwommuseum] mu
+	  on hr.museumid = mu.museumid
+	    join [MOA_Final_29072020].[ARC].[mwocmon] mon
+	  on mon.monumentid = hr.monumentid
+	  join [MOA_Final_29072020].[ARC].[registerbooks] rg
+  on rg.id = hr.registerbooks_id and rg.f_delete =0 
+
+	  and  hr.museumid = dom.museumid
+	  and hr. f_delete =dom.f_delete
+	  and hr.registerbooks_id = dom.registerbooks_id
+	  and hr.f_delete=0 and hr.f_current =1
+
+  select * from duplicatedItemWithSameRegisterBook
+ 

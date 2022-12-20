@@ -1,0 +1,325 @@
+﻿@model PagedList.IPagedList<Core.Domain.Models.ViewModels.MailInboxViewModel>
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "About";
+}
+<br />
+<br />
+<br />
+<head>
+    <link href="~/Content/DashBoard/MailInbox.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="grid email">
+                    <div class="grid-body">
+                        <div class="row">
+                            <!-- BEGIN INBOX MENU -->
+                            <div class="col-md-3">
+                                <h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
+                                <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
+
+                                <hr>
+                                <ul class="inbox-nav inbox-divider">
+                                    <li class="active">
+                                        <a href="#Inbox" id="InboxId" onclick="FilterSideMenueByType(@((int)Infrastructure.Helpers.Enums.MailTypes.New))"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">@TempData["InboxCount"]</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#Sent" id="SentId" onclick="FilterSideMenueByType(@((int)Infrastructure.Helpers.Enums.MailTypes.Sent))"><i class="fa fa-envelope-o"></i> Sent Mail<span class="label label-danger pull-right">@TempData["SentItems"]</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#Starred" id="StarredId" onclick="FilterSideMenueByType(@((int)Infrastructure.Helpers.Enums.MailTypes.Started))"><i class="fa fa-bookmark-o"></i> Starred<span class="startedSpan label label-danger pull-right">@TempData["starredItems"]</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#Trash" id="TrashId" onclick="FilterSideMenueByType(@((int)Infrastructure.Helpers.Enums.MailTypes.Trash))"><i class="fa fa-trash-o"></i> Trash<span class="label label-danger pull-right">@TempData["TrashItems"]</span></a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- END INBOX MENU -->
+                            <!-- BEGIN INBOX CONTENT -->
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Action
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#" onclick="FilterInboxesByType(@((int)Infrastructure.Helpers.Enums.InboxFilterType.All))">All</a></li>
+                                                <li><a href="#" onclick="FilterInboxesByType(@((int)Infrastructure.Helpers.Enums.InboxFilterType.Read))">read</a></li>
+                                                <li><a href="#" onclick="FilterInboxesByType(@((int)Infrastructure.Helpers.Enums.InboxFilterType.Unread))">unread</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                Newest
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#" onclick="FilterInboxesByType(@((int)Infrastructure.Helpers.Enums.InboxFilterType.New))">New</a></li>
+                                                <li><a href="#" onclick="FilterInboxesByType(@((int)Infrastructure.Helpers.Enums.InboxFilterType.Old))">Old</a></li>
+                                            </ul>
+                                        </div>
+                                    </div><br /><br />
+
+                                    <div class="col-md-6 search-form">
+                                        <div class="input-group">
+                                            @(Html.Kendo().AutoComplete()
+                                            .Name("DashBoardUsers")
+                                            .DataTextField("Email")
+                                            .Filter("contains")
+                                            .MinLength(3)
+                                            .HtmlAttributes(new { style = "width:100%" , @class= "form-control input-sm", @placeholder=Infrastructure.Resources.Validations.English.ValidationResponses.InputSearchPlaceHolder})
+                                            .DataSource(source =>
+                                            {
+                                                source.Read(read =>
+                                                {
+                                                    read.Action("GetUsersByEmail", "UserManagment", new { Area= "Managment" })
+                                                        .Data("onAdditionalData");
+                                                })
+                                                .ServerFiltering(true);
+                                            })
+                                        )
+                                            <span class="input-group-btn">
+                                                <button type="button" name="search" onclick="SearchInboxsByUSerEmail()" class="btn_ btn-primary btn-sm search"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="padding"></div>
+
+                                @if (Model.Count == 0)
+                                {
+                                    <div id="MainItems">
+                                        @Html.Partial("_EmptyInbox")
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div id="MainItems">
+                                        @Html.Partial("_DashBord", Model)
+                                    </div>
+                                }
+
+                            </div>
+                            <!-- END INBOX CONTENT -->
+                            <!-- BEGIN COMPOSE MESSAGE -->
+                            @Html.Partial("_ComposeModal")
+                            <!-- END COMPOSE MESSAGE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END INBOX -->
+        </div>
+    </div>
+
+    <audio id="inboxaudio" controls="controls" hidden>
+        <source src="~/Content/Audio/Inboxaudio.mp3" type="audio/mpeg" />
+    </audio>
+
+</body>
+
+@section Scripts {
+
+
+    <script>
+        $(document).ready(function () {
+            ShowSectionByFragmentType();
+        });
+        function ShowSectionByFragmentType() {
+
+            var hash = window.location.hash;
+            if (hash == "#Inbox") {
+                $("#MainItems").html('');
+                $("InboxId").trigger('click')
+                $("#InboxId").trigger('click')
+                $("InboxId").addClass('Active')
+            }
+
+            if (hash == "#Sent") {
+                $("#MainItems").html('');
+                $("#SentId").trigger('click')
+                $("#SentId").addClass('Active')
+            }
+
+            if (hash == "#Starred") {
+                $("#MainItems").html('');
+                $("#StarredId").trigger('click')
+                $("#StarredId").addClass('Active')
+            }
+
+            if (hash == "#Trash") {
+                $("#MainItems").html('');
+                $("#TrashId").trigger('click')
+                $("#TrashId").addClass('Active')
+            }
+
+
+        }
+    </script>
+
+    <script>
+         //DashBoard Function
+        function SearchInboxsByUSerEmail() {
+
+            var data = $('#DashBoardUsers').data('kendoAutoComplete');
+            var email = data.value();
+
+            if (email != '') {
+                if (CheckNodataFounded() == false) {
+                    if (CheckEmailValue("DashBoardUsers") == false) {
+                        return false;
+                    }
+                }
+                if (email != "" && CheckEmailValue("DashBoardUsers") == false) {
+                    return false;
+                }
+            }
+            $.ajax({
+                type: "GET",
+                url: '/DashBoardManagement/GetInboxesByUserEmail/?Email=' + email,
+                dataType: "Html",
+                async: false,
+                success: function (data) {
+                    ;
+                    $("#MainItems").html('');
+                    $("#MainItems").html(data);
+                    return false;
+                },
+                error: function (data) {
+                    if (data.Success === false) {
+                        toastr["error"]("error happen try again", "");
+                    }
+                }
+            });
+        }
+        function CheckEmailValue(type) {
+            var email = $('#' + type).val();
+            var regax = /\S+@@\S+\.\S+/;
+            if (email === '@Infrastructure.Resources.Validations.English.ValidationResponses.EmailNotFound'
+                 ||
+                typeof email === "undefined" ||
+                regax.test(email) == false) {
+                $('#' + type).val('');
+                  swal('@Infrastructure.Resources.Validations.English.ValidationResponses.NotValidEmail', "", "error");
+                return false;
+            }
+            return true;
+        }
+        function CheckNodataFounded() {
+
+            if ($('#MainItems').text().indexOf('@Infrastructure.Resources.Validations.English.ValidationResponses.NoDataFounded') == -1) {
+                return false
+            }
+
+             if ($('#MainItems').text().indexOf('@Infrastructure.Resources.Validations.English.ValidationResponses.NoDataFounded') > -1) {
+                return true
+            }
+        }
+        function FilterInboxesByType(type) {
+            ShowLoadingIcon();
+            $.ajax({
+                type: "GET",
+                url: '/DashBoardManagement/FilterInboxeByType/?type=' + type,
+                dataType: "Html",
+                success: function (data) {
+                    ;
+                    $("#MainItems").html('');
+                    $("#MainItems").html(data);
+                    hidePageLoadingSpinner();
+                    return false;
+                },
+                error: function (data) {
+                    if (data.Success === false) {
+                        toastr["error"]("error happen try again", "");
+                    }
+                }
+            });
+        }
+        function FilterSideMenueByType(type, paging) {
+
+            ShowLoadingIcon();
+            $.ajax({
+                type: "GET",
+                url: '/DashBoardManagement/FilterSideMenueByType/?type=' + type,
+                dataType: "Html",
+                success: function (data) {
+                    $("#MainItems").html('');
+                    $("#MainItems").html(data);
+                    hidePageLoadingSpinner();
+                    return false;
+                },
+                error: function (data) {
+                    if (data.Success === false) {
+                        toastr["error"]("error happen try again", "");
+                    }
+                }
+            });
+        }
+       //End Region
+
+    </script>
+
+    <script>
+        //Kendo Region
+        function onChange() {
+            
+            if (CheckNodataFounded() == false) {
+                CheckEmailValue('DashBoardUsers');
+            }
+
+        }
+        function onDataBound(e) {
+            if ("kendoConsole" in window) {
+                kendoConsole.log("event :: dataBound");
+            }
+        }
+        $("#DashBoardUsers").kendoAutoComplete({
+            change: onChange,
+            dataBound: onDataBound
+        });
+        function onAdditionalData(data) {
+            
+            return {
+                text: $("#DashBoardUsers").val()
+            };
+        }
+        //End Region
+
+
+        //Compose users  Region
+        function onChangeCompose() {
+            
+            CheckEmailValue('ComposeUser');
+        }
+        function onDataBound(e) {
+            if ("kendoConsole" in window) {
+                kendoConsole.log("event :: dataBound");
+            }
+        }
+        $("#ComposeUser").kendoAutoComplete({
+            change: onChangeCompose,
+            dataBound: onDataBound
+        });
+        function onAdditionalDataCompose(data) {
+            
+            return {
+                text: $("#ComposeUser").val()
+            };
+        }
+      //End Region
+    </script>
+
+}

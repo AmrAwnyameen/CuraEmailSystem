@@ -1,0 +1,91 @@
+﻿@model EmailServices.Models.RecoveryEmail
+@{
+    ViewBag.Title = "Recovery";
+}
+
+<div id="recovery">
+    @using (Ajax.BeginForm("RecoveryEmail", "Account",
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnFailure = "OnFailure",
+                    OnSuccess = "OnSuccessRecovery",
+                    OnBegin = "OnBeginRecovery"
+
+                }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="alert alert-warning text-center" role="alert">
+            <h4 class="alert-heading">Add recovery Emil Address!</h4>
+            <p> (Highly recomended)</p>
+            <p>  we will send Link to this email if you forgot your password or get lock out of your account</p>
+            <p>  the email will only be used for Recovery Purposes</p>
+            <hr>
+            @Html.ActionLink(Infrastructure.Resources.Validations.English.ValidationResponses.Skip, "Inbox", "Home", null, new { @class = "btn btn-warning" })
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, Infrastructure.Resources.Validations.English.ValidationResponses.RecoveryEmail, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <input type="submit" class="btn btn-default" value="@Infrastructure.Resources.Validations.English.ValidationResponses.Register" />
+                @Html.ActionLink(Infrastructure.Resources.Validations.English.ValidationResponses.SignIn, "Login", null, new { @class = "btn btn-default" })
+
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+        function OnBeginRecovery() {
+            if (CheckRecoveryEmailValue() == false) {
+                return false;
+            }
+
+            ShowLoadingIcon();
+            $("#recovery").addClass('hide')
+        }
+        function OnSuccessRecovery(data) {
+            debugger
+            if (data == true) {
+                $("#recovery").removeClass('hide')
+                swal("@Infrastructure.Resources.Validations.English.ValidationResponses.RecoverEmailSucsessMessage", "", "success");
+                hidePageLoadingSpinner();
+                setTimeout(RedirectToHome, 5000);
+            }
+            else {
+                 return  toastr.error('@Infrastructure.Resources.Validations.English.ValidationResponses.RecoverEmailFailMessage');
+            }
+        }
+        function RedirectToHome() {
+            window.location.href = "/Home/Inbox"
+        }
+        function CheckRecoveryEmailValue() {
+             var email = $('#Email').val();
+            var regax = /\S+@@\S+\.\S+/;
+            if (
+                typeof email === "undefined" ||
+                regax.test(email) == false) {
+                $('#Email').val('');
+                swal('@Infrastructure.Resources.Validations.English.ValidationResponses.emailnotvalid', "", "error");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

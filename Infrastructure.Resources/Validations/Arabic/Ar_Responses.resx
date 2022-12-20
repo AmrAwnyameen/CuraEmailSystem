@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcreOrchards" xml:space="preserve">
+    <value>فدان مطلوب</value>
+  </data>
+  <data name="ActivityTypeFarms" xml:space="preserve">
+    <value>نوع النشاط مطلوب</value>
+  </data>
+  <data name="ActivityTypeNotValid" xml:space="preserve">
+    <value>FarmActivityType is invalid</value>
+  </data>
+  <data name="ActivityTypeNumberOnly" xml:space="preserve">
+    <value>2023</value>
+  </data>
+  <data name="ActivityTypeValidations" xml:space="preserve">
+    <value>2012</value>
+  </data>
+  <data name="AddressOrchards" xml:space="preserve">
+    <value>2030</value>
+  </data>
+  <data name="AddressShipmment" xml:space="preserve">
+    <value>2047</value>
+  </data>
+  <data name="ApplicantAddress" xml:space="preserve">
+    <value>2008</value>
+  </data>
+  <data name="ApplicantEmail" xml:space="preserve">
+    <value>الاميل مطلوب</value>
+  </data>
+  <data name="ApplicantEmailFormat" xml:space="preserve">
+    <value>البريد الالكترونى غير صحيح</value>
+  </data>
+  <data name="ApplicantGovernorate" xml:space="preserve">
+    <value>2007</value>
+  </data>
+  <data name="ApplicantGovernorateCodeNotExist" xml:space="preserve">
+    <value>Applicant Governorate Code  is Invalid</value>
+  </data>
+  <data name="ApplicantGovernorateNotValid" xml:space="preserve">
+    <value>2077</value>
+  </data>
+  <data name="ApplicantName" xml:space="preserve">
+    <value>2004</value>
+  </data>
+  <data name="AreaFarms" xml:space="preserve">
+    <value>المساحة(متر مربع) مطلوب</value>
+  </data>
+  <data name="AttachmentCodeNotValid" xml:space="preserve">
+    <value>2062</value>
+  </data>
+  <data name="AttachmentCodeRequired" xml:space="preserve">
+    <value>2043</value>
+  </data>
+  <data name="AttachmentNameRequired" xml:space="preserve">
+    <value>2061</value>
+  </data>
+  <data name="AttachmentRequired" xml:space="preserve">
+    <value>2066</value>
+  </data>
+  <data name="attchmentsRequired" xml:space="preserve">
+    <value>Attachement is required</value>
+  </data>
+  <data name="AttorneyAttchments" xml:space="preserve">
+    <value>صورة التوكيل</value>
+  </data>
+  <data name="Authorizationletter" xml:space="preserve">
+    <value>خطاب التفويض</value>
+  </data>
+  <data name="AuthorizationNumberNotValid" xml:space="preserve">
+    <value>2086</value>
+  </data>
+  <data name="AuthoriztionDateTimeNotValid" xml:space="preserve">
+    <value>3026</value>
+  </data>
+  <data name="CancelRequestMessage" xml:space="preserve">
+    <value>تم تنفيذ الطلب بنجاح</value>
+  </data>
+  <data name="CharacterRequired" xml:space="preserve">
+    <value>Character is required</value>
+  </data>
+  <data name="charchternotValid" xml:space="preserve">
+    <value>2041</value>
+  </data>
+  <data name="charchterRequired" xml:space="preserve">
+    <value>charchter required</value>
+  </data>
+  <data name="CityOrchards" xml:space="preserve">
+    <value>2029</value>
+  </data>
+  <data name="CodeInvalidLookup" xml:space="preserve">
+    <value>2050</value>
+  </data>
+  <data name="CodeNotFound" xml:space="preserve">
+    <value>الكود غير موجود</value>
+  </data>
+  <data name="CodeRequired" xml:space="preserve">
+    <value>أرجو أدخال الكود</value>
+  </data>
+  <data name="CodeRequiredLookup" xml:space="preserve">
+    <value>2049</value>
+  </data>
+  <data name="CollectionFeesAmount" xml:space="preserve">
+    <value>2054</value>
+  </data>
+  <data name="CollectionFeesAmountNotValid" xml:space="preserve">
+    <value>2057</value>
+  </data>
+  <data name="CommercialRegistrationNotValid" xml:space="preserve">
+    <value>2081</value>
+  </data>
+  <data name="CommercialRegistrationNoValidations" xml:space="preserve">
+    <value>2013</value>
+  </data>
+  <data name="CompanyInfoRequired" xml:space="preserve">
+    <value>Company Information  is required</value>
+  </data>
+  <data name="ComplainedPartyIsRequired" xml:space="preserve">
+    <value>2033</value>
+  </data>
+  <data name="ComplaintSubjectIsRequired" xml:space="preserve">
+    <value>2035</value>
+  </data>
+  <data name="correlationIdRequired" xml:space="preserve">
+    <value>2036</value>
+  </data>
+  <data name="CustomerAuthorizationAmountNotValid" xml:space="preserve">
+    <value>2058</value>
+  </data>
+  <data name="CustomerAuthorizationAmountRequired" xml:space="preserve">
+    <value>2052</value>
+  </data>
+  <data name="DataorAttachementisrequired" xml:space="preserve">
+    <value>Data or Attachement is required</value>
+  </data>
+  <data name="DateTimeFormatError" xml:space="preserve">
+    <value>من فضلك ادخل تاريخ صحيح</value>
+  </data>
+  <data name="DeliveryMethodNotValid" xml:space="preserve">
+    <value>2060</value>
+  </data>
+  <data name="DeliveryMethodRequired" xml:space="preserve">
+    <value>2042</value>
+  </data>
+  <data name="DetailedAddressValidations" xml:space="preserve">
+    <value>2011</value>
+  </data>
+  <data name="EasternBorderOrchards" xml:space="preserve">
+    <value>2024</value>
+  </data>
+  <data name="EmailNotValid" xml:space="preserve">
+    <value>2076</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا أثناء  الحفظ</value>
+  </data>
+  <data name="FarmAcreOrchardsNotValid" xml:space="preserve">
+    <value>2091</value>
+  </data>
+  <data name="FarmActivityTypeRequired" xml:space="preserve">
+    <value>FarmActivityType is required</value>
+  </data>
+  <data name="FarmAddress" xml:space="preserve">
+    <value>2016</value>
+  </data>
+  <data name="FarmArea" xml:space="preserve">
+    <value>2018</value>
+  </data>
+  <data name="FarmBuildingIdNotValid" xml:space="preserve">
+    <value>2089</value>
+  </data>
+  <data name="FarmCaratOrchardsNotValid" xml:space="preserve">
+    <value>2092</value>
+  </data>
+  <data name="FarmCity" xml:space="preserve">
+    <value>2015</value>
+  </data>
+  <data name="FarmGeographicalLocation" xml:space="preserve">
+    <value>2088</value>
+  </data>
+  <data name="FarmGovernorate" xml:space="preserve">
+    <value>2014</value>
+  </data>
+  <data name="FarmGovernorateNotValid" xml:space="preserve">
+    <value>2097</value>
+  </data>
+  <data name="FarmGovernorateOrchaNotValid" xml:space="preserve">
+    <value>3023</value>
+  </data>
+  <data name="FarmIdInvalid" xml:space="preserve">
+    <value>2090</value>
+  </data>
+  <data name="FarmIdNotFound" xml:space="preserve">
+    <value>كود المزرعه غير موجود</value>
+  </data>
+  <data name="FarmNotFound" xml:space="preserve">
+    <value>FarmID is Invalid</value>
+  </data>
+  <data name="FarmPropertyType" xml:space="preserve">
+    <value>2017</value>
+  </data>
+  <data name="FarmRequestTypeNotValid" xml:space="preserve">
+    <value>2022</value>
+  </data>
+  <data name="FarmRequestTypeOrchards" xml:space="preserve">
+    <value>3022</value>
+  </data>
+  <data name="FarmRequestTypeOrchardsnotvalid" xml:space="preserve">
+    <value>2051</value>
+  </data>
+  <data name="FarmRequestTypeOrchardsRequired" xml:space="preserve">
+    <value>FarmRequestTypeOrchards is required</value>
+  </data>
+  <data name="FarmRequestTypeRequired" xml:space="preserve">
+    <value>FarmRequest Type is Required</value>
+  </data>
+  <data name="FarmsAreaNumberOnly" xml:space="preserve">
+    <value>2019</value>
+  </data>
+  <data name="FarmShareOrchardsNotValid" xml:space="preserve">
+    <value>2093</value>
+  </data>
+  <data name="FarmsInfoNotFound" xml:space="preserve">
+    <value>هذا الرقم القومى ليس لديه اى مزراع</value>
+  </data>
+  <data name="FileCodeNotExist" xml:space="preserve">
+    <value>AttachmentCode is Invalid</value>
+  </data>
+  <data name="FileSavingError" xml:space="preserve">
+    <value>File Saving Error</value>
+  </data>
+  <data name="FilLenghtMessage" xml:space="preserve">
+    <value>Attachement is Invalid, Maximum size is 2 Mega</value>
+  </data>
+  <data name="FilLenghtNotValid" xml:space="preserve">
+    <value>FilLenghtNotValid</value>
+  </data>
+  <data name="FrmNotFound" xml:space="preserve">
+    <value>هذه المزرعه غير موجوده</value>
+  </data>
+  <data name="FullNameShipmment" xml:space="preserve">
+    <value>2045</value>
+  </data>
+  <data name="GetFarmSlug" xml:space="preserve">
+    <value>MALR-01</value>
+  </data>
+  <data name="GovernorateCodeNotExist" xml:space="preserve">
+    <value>Farm Governorate is Invalid</value>
+  </data>
+  <data name="GovernorateCodeNotValid" xml:space="preserve">
+    <value>2063</value>
+  </data>
+  <data name="GovernorateCodeShipmment" xml:space="preserve">
+    <value>2048</value>
+  </data>
+  <data name="GovernorateNotExist" xml:space="preserve">
+    <value>2048</value>
+  </data>
+  <data name="GovernorateOrchaCodeNotExist" xml:space="preserve">
+    <value>FarmGovernorateOrchards is Invalid</value>
+  </data>
+  <data name="GovernorateOrchards" xml:space="preserve">
+    <value>2028</value>
+  </data>
+  <data name="GovernorateShipMmentCodeNotExist" xml:space="preserve">
+    <value>GovernorateCode  is Invalid</value>
+  </data>
+  <data name="GreenHouseNumberInvalid" xml:space="preserve">
+    <value>3029</value>
+  </data>
+  <data name="GreenHouseNumberRequired" xml:space="preserve">
+    <value>GreenHouseNumber is required</value>
+  </data>
+  <data name="HeaderValidtion" xml:space="preserve">
+    <value>Required Or not Valid Type</value>
+  </data>
+  <data name="InvalidCharacter" xml:space="preserve">
+    <value>2059</value>
+  </data>
+  <data name="InvalidCharacterOrcha" xml:space="preserve">
+    <value>Character is Invalid</value>
+  </data>
+  <data name="InvalidRequesterType" xml:space="preserve">
+    <value>RequesterType is invalid</value>
+  </data>
+  <data name="IsConfirmedNotValid" xml:space="preserve">
+    <value>IsConfirmed is Invalid</value>
+  </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>User Name Or Password not valid</value>
+  </data>
+  <data name="LooKupSlugNotApplied" xml:space="preserve">
+    <value>MALR-01 is the default value , it should only work with these service slug</value>
+  </data>
+  <data name="MALR-02" xml:space="preserve">
+    <value>MALR-02</value>
+  </data>
+  <data name="MALR-03" xml:space="preserve">
+    <value>MALR-03</value>
+  </data>
+  <data name="MALR-06" xml:space="preserve">
+    <value>MALR-06</value>
+  </data>
+  <data name="MALR-11" xml:space="preserve">
+    <value>MALR-11</value>
+  </data>
+  <data name="MALR-17" xml:space="preserve">
+    <value>MALR-17</value>
+  </data>
+  <data name="MALR-22" xml:space="preserve">
+    <value>MALR-22</value>
+  </data>
+  <data name="MechanismNotValid" xml:space="preserve">
+    <value>AuthorizingMechanism is Invalid</value>
+  </data>
+  <data name="NationalID" xml:space="preserve">
+    <value>2001</value>
+  </data>
+  <data name="NationalIdLenght" xml:space="preserve">
+    <value>2002</value>
+  </data>
+  <data name="NationalIdNotFound" xml:space="preserve">
+    <value>NationalId is invalid</value>
+  </data>
+  <data name="NorthernBorderOrchards" xml:space="preserve">
+    <value>2025</value>
+  </data>
+  <data name="NotificationPassword" xml:space="preserve">
+    <value>K5*S_wEZr*eG9m8}</value>
+  </data>
+  <data name="NotificationUserName" xml:space="preserve">
+    <value>Stage_Malr2</value>
+  </data>
+  <data name="Notification_Password_Prod_Malr" xml:space="preserve">
+    <value>M@LR@2o22</value>
+  </data>
+  <data name="Notification_Url_Host_Production" xml:space="preserve">
+    <value>http://10.229.1.3/GGProxy/api/submission/submitgovtalk</value>
+  </data>
+  <data name="Notification_Url_Prod_Malr" xml:space="preserve">
+    <value>http://10.229.1.3/proxy/api/submission/login</value>
+  </data>
+  <data name="Notification_UserName_Prod_Malr" xml:space="preserve">
+    <value>Prod_Malr</value>
+  </data>
+  <data name="numberOnly" xml:space="preserve">
+    <value>2343434</value>
+  </data>
+  <data name="numberRange" xml:space="preserve">
+    <value>ارقام فقط من 0 الى 1</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>200</value>
+  </data>
+  <data name="originatingChannelNotValid" xml:space="preserve">
+    <value>originatingChannel is Invalid</value>
+  </data>
+  <data name="originatingRequired" xml:space="preserve">
+    <value>2037</value>
+  </data>
+  <data name="originatingUserTypeNotValid" xml:space="preserve">
+    <value>originatingUserType is Invalid</value>
+  </data>
+  <data name="OwnerNameRequired" xml:space="preserve">
+    <value>2009</value>
+  </data>
+  <data name="PaymentRequestNumberNotvalid" xml:space="preserve">
+    <value>2096</value>
+  </data>
+  <data name="PaymentRequestTotalAmount" xml:space="preserve">
+    <value>2053</value>
+  </data>
+  <data name="PaymentRequestTotalNotValid" xml:space="preserve">
+    <value>2056</value>
+  </data>
+  <data name="PhoneLenght" xml:space="preserve">
+    <value>2006</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>2005</value>
+  </data>
+  <data name="PhoneNumberShipmment" xml:space="preserve">
+    <value>2046</value>
+  </data>
+  <data name="PortlaLoginHost" xml:space="preserve">
+    <value>https://10.35.45.36/proxy/api/submission/login</value>
+  </data>
+  <data name="PortlaNotificationUrl" xml:space="preserve">
+    <value>http://10.35.45.36/GGProxy/api/submission/submitgovtalk</value>
+  </data>
+  <data name="PortlaPassword" xml:space="preserve">
+    <value>K5*S_wEZr*eG9m7}</value>
+  </data>
+  <data name="PortlaUserName" xml:space="preserve">
+    <value>Stage_Malr</value>
+  </data>
+  <data name="PropertyTypeFarms" xml:space="preserve">
+    <value>2020</value>
+  </data>
+  <data name="PropertyTypeNotValid" xml:space="preserve">
+    <value>FarmPropertyType is invalid</value>
+  </data>
+  <data name="PropertyTypeNotValidOrcha" xml:space="preserve">
+    <value>FarmPropertyTypeOrchards is invalid</value>
+  </data>
+  <data name="PropertyTypeNumberOnly" xml:space="preserve">
+    <value>2032</value>
+  </data>
+  <data name="PropertyTypeOrchards" xml:space="preserve">
+    <value>2031</value>
+  </data>
+  <data name="ReconciliationDateNotValid" xml:space="preserve">
+    <value>3025</value>
+  </data>
+  <data name="RequestIDNotValid" xml:space="preserve">
+    <value>2075</value>
+  </data>
+  <data name="RequestIDRequired" xml:space="preserve">
+    <value>2039</value>
+  </data>
+  <data name="RequestNotPaid" xml:space="preserve">
+    <value>This request has no paid</value>
+  </data>
+  <data name="RequestNotValid" xml:space="preserve">
+    <value>RequestId  is Invalid</value>
+  </data>
+  <data name="RequestNotValidFees" xml:space="preserve">
+    <value>fees not found for this request</value>
+  </data>
+  <data name="RequestNotValidRequired" xml:space="preserve">
+    <value>2075</value>
+  </data>
+  <data name="RequestNumberInvalid" xml:space="preserve">
+    <value>2083</value>
+  </data>
+  <data name="RequestNumberRequired" xml:space="preserve">
+    <value>2082</value>
+  </data>
+  <data name="RequestPartyEmailNotValid" xml:space="preserve">
+    <value>3018</value>
+  </data>
+  <data name="RequestPartyNameValidation" xml:space="preserve">
+    <value>2010</value>
+  </data>
+  <data name="RequestRequireAttachments" xml:space="preserve">
+    <value>بيانات المرفقات مطلوبه</value>
+  </data>
+  <data name="RequestRequiremenInfo" xml:space="preserve">
+    <value>بيانات المزرعه مطلوبه</value>
+  </data>
+  <data name="RequestStatusComplainNotValid" xml:space="preserve">
+    <value>request status not valid should be documentsRequired ,</value>
+  </data>
+  <data name="RequestStatusNotValid" xml:space="preserve">
+    <value>Current Request Status is Invalid</value>
+  </data>
+  <data name="RequestTypeNotValid" xml:space="preserve">
+    <value>FarmRequestType is invalid</value>
+  </data>
+  <data name="RequestTypeNotValidOrcha" xml:space="preserve">
+    <value>FarmRequestTypeOrchards is Invalid</value>
+  </data>
+  <data name="RequestTypeNumberOnly" xml:space="preserve">
+    <value>2022</value>
+  </data>
+  <data name="RequireAttachmentsAndInfo" xml:space="preserve">
+    <value>بيانات المرفقات  وبيانات المزرعه مطلوبه</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="RequsterTypeNotValid" xml:space="preserve">
+    <value>RequsterType Required</value>
+  </data>
+  <data name="RequsterTypeRequired" xml:space="preserve">
+    <value>RequsterType is required</value>
+  </data>
+  <data name="SavedSuccess" xml:space="preserve">
+    <value>تم الحفظ بنجاح</value>
+  </data>
+  <data name="SenderRequestNumberNotValid" xml:space="preserve">
+    <value>2095</value>
+  </data>
+  <data name="ServiceCodeErrror" xml:space="preserve">
+    <value>ServiceCode is Invalid</value>
+  </data>
+  <data name="ServiceCodeInvalid" xml:space="preserve">
+    <value>2074</value>
+  </data>
+  <data name="serviceCodeRequired" xml:space="preserve">
+    <value>2003</value>
+  </data>
+  <data name="ServiceCodeSlugErrror" xml:space="preserve">
+    <value>service  slug not related with service code</value>
+  </data>
+  <data name="serviceEntityIdNotValid" xml:space="preserve">
+    <value>serviceEntityId is Invalid</value>
+  </data>
+  <data name="servicelookupValuesnotfound" xml:space="preserve">
+    <value>Code is Invalid</value>
+  </data>
+  <data name="ServiceSlugRequired" xml:space="preserve">
+    <value>2038</value>
+  </data>
+  <data name="ShipmenPhoneNumber" xml:space="preserve">
+    <value>3019</value>
+  </data>
+  <data name="ShipmenPhoneNumberPhoneLenght" xml:space="preserve">
+    <value>3020</value>
+  </data>
+  <data name="ShipmentCodeNotFound" xml:space="preserve">
+    <value>Status is Invalid</value>
+  </data>
+  <data name="ShipmentInfoNotFound" xml:space="preserve">
+    <value>Shipment Info required</value>
+  </data>
+  <data name="ShipmentNumberNotFoundForThisRequest" xml:space="preserve">
+    <value>this request has no have any shipment informations </value>
+  </data>
+  <data name="ShipmentNumberRequired" xml:space="preserve">
+    <value>2040</value>
+  </data>
+  <data name="ShipmmentAdressNotFond" xml:space="preserve">
+    <value>بيانات التوصيل غير موجوده</value>
+  </data>
+  <data name="SlugNotFound" xml:space="preserve">
+    <value>Service Slug is invalid</value>
+  </data>
+  <data name="SouthernBorderOrchards" xml:space="preserve">
+    <value>2027</value>
+  </data>
+  <data name="StatusNotValid" xml:space="preserve">
+    <value>2085</value>
+  </data>
+  <data name="StatusRequired" xml:space="preserve">
+    <value>2070</value>
+  </data>
+  <data name="StParentCode" xml:space="preserve">
+    <value> StParentCode is Invalid</value>
+  </data>
+  <data name="StParentCodeNotValid" xml:space="preserve">
+    <value>2094</value>
+  </data>
+  <data name="Succes" xml:space="preserve">
+    <value>تم الحفظ بنجاح</value>
+  </data>
+  <data name="SuccesLogin" xml:space="preserve">
+    <value>Succes Login</value>
+  </data>
+  <data name="SuccessSend" xml:space="preserve">
+    <value>تم الارسال بنجاح</value>
+  </data>
+  <data name="TimeStampNotValid" xml:space="preserve">
+    <value>2071</value>
+  </data>
+  <data name="TimeStampRequired" xml:space="preserve">
+    <value>2069</value>
+  </data>
+  <data name="TransactionNumberNotValid" xml:space="preserve">
+    <value>2073</value>
+  </data>
+  <data name="TransactionNumberRequired" xml:space="preserve">
+    <value>2055</value>
+  </data>
+  <data name="TypeOfDamageIsRequired" xml:space="preserve">
+    <value>2034</value>
+  </data>
+  <data name="userdoesnthaveanyfarms" xml:space="preserve">
+    <value>this user doesn't have any farms</value>
+  </data>
+  <data name="UserFarmNotFound" xml:space="preserve">
+    <value>هذه المزرعه ليست مرتبطه بهذا الطلب</value>
+  </data>
+  <data name="ValidtionErrorMessage" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="WesternBorderOrchards" xml:space="preserve">
+    <value>2026</value>
+  </data>
+  <data name="YearnotValid" xml:space="preserve">
+    <value>2087</value>
+  </data>
+</root>

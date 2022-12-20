@@ -1,0 +1,132 @@
+﻿@using Kendo.Mvc.UI
+<br />
+<br />
+
+<head>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+
+<div class="modal fade" id="compose-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-wrapper">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-blue">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+
+                @using (Html.BeginForm("SendNewMail", "DashBoardManagement", new { area = "Managment" }, FormMethod.Post
+                           , new { id = "ComposeDataForm", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @(Html.Kendo().AutoComplete()
+                                            .Name("ComposeUser")
+                                            .DataTextField("Email")
+                                            .Filter("contains")
+                                            .MinLength(3)
+                                            .HtmlAttributes(new { style = "width:100%" , @class= "form-control input-sm", @placeholder=Infrastructure.Resources.Validations.English.ValidationResponses.InputSearchPlaceHolder })
+                                            .DataSource(source =>
+                                            {
+                        source.Read(read =>
+                        {
+                            read.Action("GetUsersByEmail", "UserManagment", new { Area= "Managment" })
+                                .Data("onAdditionalDataCompose");
+                        })
+                        .ServerFiltering(true);
+                    })
+                                        )
+                        </div>
+                        <div class="form-group">
+                            <input name="subject" required id="Subject" maxlength="50" type="email" class="form-control" placeholder="Subject">
+                            <span id="errorMessage" class="text-danger field-validation-error" hidden>@Infrastructure.Resources.Validations.English.ValidationResponses.SubjectRequired</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="Message" id="Message" class="form-control" placeholder="Message" style="height: 120px;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="Attachment" id="Attachment">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Discard</button>
+                        <button type="button" id="savebutton" class="btn btn-primary pull-right"><i class="fa fa-envelope"></i> Send Message</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#Attachment').change(function (e) {
+        
+        var allowedExtention = ['jpg', 'jpeg', 'png', 'pdf', 'docx', 'doc', 'gif', 'txt', 'tif', 'giff', 'xlsx']
+        var size = 5 * 1024 * 1024;
+        var fileName = e.target.value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        var fileSize = $("#Attachment")[0].files[0].size;
+
+        if (fileSize > size) {
+            swal("@Infrastructure.Resources.Validations.English.ValidationResponses.FileSize", "", "error");
+        $(this).val("");
+                    return;
+                }
+
+        if (jQuery.inArray(extFile, allowedExtention) === -1) {
+            swal("@Infrastructure.Resources.Validations.English.ValidationResponses.FileExtension", "", "error");
+        $(this).val('');
+                    return;
+                }
+    });
+    $("#Subject").change(function (e) {
+        $("#errorMessage").attr('hidden', 'hidden');
+
+    });
+    $("#savebutton").click(function (e) {
+        
+        var form = $('#ComposeDataForm')[0];
+        var data = new FormData(form);
+        if (CheckEmailValue("ComposeUser") == false || $("#Subject").val() == '' ) {
+            e.preventDefault();
+            if ($("#Subject").val() == '') {
+                $("#errorMessage").removeAttr('hidden');
+            }
+            return false;
+        }
+        $.ajax({
+            type: "Post",
+            url: "/DashBoardManagement/SendNewMail",
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.Success == true) {
+                    OnSuccessResult(data.Data)
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 3000);
+                    return;
+                }
+                else {
+                    swal("This user not found", "", "error");
+
+                }
+                
+            },
+            error: function (data) {
+                $("#compose-modal").modal('hide');
+                return swal("success", "", "success");
+            }
+        });
+    });
+    function OnSuccessResult(user) {
+        swal("@Infrastructure.Resources.Validations.English.ValidationResponses.FileSaveSuccessfully" + " " + user, "", "success");
+        $("#compose-modal").modal('hide');
+      
+    }
+</script>

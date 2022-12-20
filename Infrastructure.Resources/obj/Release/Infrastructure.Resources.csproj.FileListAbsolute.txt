@@ -1,0 +1,16 @@
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\bin\Release\Infrastructure.Resources.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\bin\Release\Infrastructure.Resources.pdb
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.Validations.Arabic.Ar_Responses.resources
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.GenerateResource.cache
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.CoreCompileInputs.cache
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.pdb
+C:\Users\amr.awany\source\repos\AgricultureApis\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.AssemblyReference.cache
+D:\CuraEmailSystem\Infrastructure.Resources\bin\Release\Infrastructure.Resources.dll
+D:\CuraEmailSystem\Infrastructure.Resources\bin\Release\Infrastructure.Resources.pdb
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.AssemblyReference.cache
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.Validations.English.ValidationResponses.resources
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.GenerateResource.cache
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.csproj.CoreCompileInputs.cache
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.dll
+D:\CuraEmailSystem\Infrastructure.Resources\obj\Release\Infrastructure.Resources.pdb

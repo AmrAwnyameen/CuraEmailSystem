@@ -1,0 +1,6 @@
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\bin\Release\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\bin\Release\Core.InterFaces.pdb
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Release\Core.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Release\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Release\Core.InterFaces.pdb
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Release\Core.Interfaces.csproj.AssemblyReference.cache

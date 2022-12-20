@@ -1,0 +1,17 @@
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\bin\Debug\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\bin\Debug\Core.InterFaces.pdb
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Debug\Core.Interfaces.csproj.AssemblyReference.cache
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Debug\Core.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Debug\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\AgricultureApis\Core.InterFaces\obj\Debug\Core.InterFaces.pdb
+D:\CuraEmailSystem\Core.InterFaces\bin\Debug\Core.InterFaces.dll
+D:\CuraEmailSystem\Core.InterFaces\bin\Debug\Core.InterFaces.pdb
+D:\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.Interfaces.csproj.CoreCompileInputs.cache
+D:\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.InterFaces.dll
+D:\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.InterFaces.pdb
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\bin\Debug\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\bin\Debug\Core.InterFaces.pdb
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.Interfaces.csproj.AssemblyReference.cache
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.InterFaces.dll
+C:\Users\amr.awany\source\repos\CuraEmailSystem\Core.InterFaces\obj\Debug\Core.InterFaces.pdb

@@ -1,0 +1,109 @@
+﻿@model Core.Domain.Models.ViewModels.DashBoard.InboxCardViewModel
+@{
+    ViewBag.Title = "InboxeCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/DashBoard/MailInbox.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+@if (Model !=null && Model.Id > 0)
+{
+
+    <div style="width:500px; margin:0 auto;">
+        <div class="card text-center" style="width: 40rem;">
+            <img class="card-img-top" src="~/Content/Images/Cura.jpg" width="30" height="50" alt="Card image cap">
+            <div class="card-header">
+                <p>From:  <strong>@Model.user.UserName</strong> </p>    
+            </div>
+            <div class="card-body">
+                <p class="card-text"> @Model.Content</p>
+                @Html.ActionLink("Inbox", "Inbox", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+                @if (Model.IsDeleted == false)
+                {
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteModal">Delete</button>
+                }
+
+            </div>
+            <div>
+            </div>
+            <div class="card-footer text-muted">
+                @Model.Date.ToString()
+            </div>
+        </div>
+    </div>
+
+   
+
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="onDelete('@(Infrastructure.Helpers.Security.WebUiUtility.Encrypt(Model.Id.ToString()))')" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+<script>
+    $("#logoutForm").hide();
+
+    function onDelete(uid) {
+        
+        $(this).attr('disable','disabled')
+        $.ajax({
+            type: "DELETE",
+            url: '/DashBoardManagement/DeleteInbox/?InboxId=' + uid,
+            dataType: "Json",
+            async: false,
+            success: function (data) {
+                if (data.Success == true) {
+                    swal("@Infrastructure.Resources.Validations.English.ValidationResponses.Deleted"
+                        , "");
+
+                    $("#DeleteModal").hide();
+                    setTimeout(function () {
+                        window.location.href = "/Home/Inbox/";
+                    }, 2000);
+                    return;
+                }
+                $(this).removeAttr('disable');
+                return toastr["error"]("error happen try again", "");
+
+            },
+            error: function (data) {
+                if (data.Success === false) {
+                    toastr["error"]("error happen try again", "");
+                }
+            }
+        });
+    }
+
+</script>
+

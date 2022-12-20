@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo/2015.2.902/css")
+    @Styles.Render("~/fonts/font-awesome/css/css")
+    @Scripts.Render("~/bundles/jquery")
+
+    <style>
+                /* Paste this css to your style sheet file or under head tag */
+                /* This only works with JavaScript,
+        if it's not present, don't show loader */
+                .no-js #loader {
+                    display: none;
+                }
+
+                .js #loader {
+                    display: block;
+                    position: absolute;
+                    left: 100px;
+                    top: 0;
+                }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(../../Content/Images/Preloader_1.gif) center no-repeat #fff;
+        }
+     
+    </style>
+
+
+</head>
+<body>
+
+    <div class="se-pre-con"></div>
+    <div id="ajaxLoaderDiv" style="position:fixed; top:40%; left:45%; z-index:1234; display:none;">
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+   
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Kendo")
+    @Scripts.Render("~/plugins/slimScroll")
+    @Scripts.Render("~/bundles/inspinia")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        //Home
+    function showPageLoadingSpinner() {
+        $('#ajaxLoaderDiv').show();
+        $('#ajaxLoaderDiv').append(
+            '<img src="@Url.Content("~/Content/Images/Preloader_1.gif")" alt="Loading..."class="ajax-loader" />'
+        );
+        }
+    function ShowLoadingIcon() {
+        $('#ajaxLoaderDiv').show();
+        $('#ajaxLoaderDiv').append(
+            '<img src="@Url.Content("~/Content/Images/Preloader_1.gif")" alt="Loading..."class="ajax-loader" />'
+        );
+    }
+    function hidePageLoadingSpinner() {
+        setTimeout(function () {
+            $('.ajax-loader').remove();
+            $('#ajaxLoaderDiv').hide();
+        }, 1000);
+    }
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+    </script>
+
+    <script src="~/Content/signal/jquery.signalR-2.1.1.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script type="text/javascript">
+        //Region signal r
+        setInterval(MyCurrentHub, 20000);
+        function MyCurrentHub() {
+            // Declare a proxy to reference the hub.
+            var notifications = $.connection.messagesHub;
+            //;
+            // Create a function that the hub can call to broadcast messages.
+            notifications.client.updateMessages = function () {
+                getAllMessages()
+
+            };
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                getAllMessages();
+            }).fail(function (e) {
+                alert(e);
+            });
+        };
+        function getAllMessages() {
+            $.ajax({
+                url: '/Home/HupCheckNewInboxes',
+                contentType: 'application/html ; charset:utf-8',
+                type: 'GET',
+                dataType: 'Json'
+            }).success(function (result) {
+                
+                if (result == true) {
+                    swal("@Infrastructure.Resources.Validations.English.ValidationResponses.NewInboxRecived'", "", "success");
+                    var audio = document.getElementById("inboxaudio");
+                    audio.play();
+                    Reload();
+                }
+            }).error(function () {
+
+            });
+        }
+        function PlayNotificationMessage() {
+            var audio = document.getElementById("inboxaudio");
+            audio.play();
+        }
+        function Reload() {
+            setTimeout(function () {
+                location.reload();
+            }, 4000);
+        }
+    </script>
+</body>
+
+
+
+</html>

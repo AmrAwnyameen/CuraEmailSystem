@@ -1,0 +1,56 @@
+﻿@using EmailServices.Models
+@model LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/cs/style.css" rel="stylesheet" />
+</head>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img" style="background-image: url(/Content/Images/curaMedical.png);">
+                        </div>
+                       
+                        <div class="login-wrap p-4 p-md-5">
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "signin-form", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group mb-3">
+                                    @Html.LabelFor(m => m.Email)
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group mb-3">
+                                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                </div>
+                                <div class="form-group d-md-flex">
+                                    
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            <p class="text-center">New To Cura? <a data-toggle="tab">@Html.ActionLink("Create An Acconut", "Register")</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
