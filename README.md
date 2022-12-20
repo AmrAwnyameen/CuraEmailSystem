@@ -4,7 +4,7 @@
   Simple Internal Email system  Demo To send and received Email
 <hr></hr>
 
-📄 [CuraEmail](https://curaemail.azurewebsites.net/)
+📄 [Cura Email](https://curaemail.azurewebsites.net/)
 
 <hr>
 
