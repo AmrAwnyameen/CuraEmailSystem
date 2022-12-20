@@ -4,13 +4,17 @@
   Simple Internal Email system  Demo To send and received Email
 <hr></hr>
 
-📄 [Cura](https://curaemail.azurewebsites.net/)
+📄 [CuraEmail](https://curaemail.azurewebsites.net/)
+
+<hr>
 
 📄 [Demo](https://drive.google.com/file/d/1ig2ZR8IPMSlIL5og8Ve7AAiNQ69oxij3/view)
 
 <hr>
 
 📄 [Db schema](https://drive.google.com/file/d/1gKf2ANgu6duqtCgrKSwDGAxHP7wImyL7/view?usp=sharing)
+
+<hr>
 
 
 <h3 align="left">Languages and Tools:</h3>
